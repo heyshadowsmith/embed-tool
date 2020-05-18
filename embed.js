@@ -1,1 +1,3 @@
-alert('Hello')
+module.exports = () => {
+  console.log('Test')
+}
