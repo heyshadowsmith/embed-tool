@@ -1,22 +1,15 @@
-// Create utility
-const embedHook = document.getElementById('uw-8a64cm')
-vhtml = document.createAttribute("v-html")
-vhtml.value = "embed"
-embedHook.setAttributeNode(vhtml)
+// Add Vue
+const vueScript = document.createElement('script')
+vueScript.src = 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js'
 
 async function getHtml() {
   const response = await fetch('https://embed-tool.now.sh/remote.html')
   return response.text()
 }
 
-function mountUtility(embed) {
+function mountUtility() {
   new Vue({
     el: '#uw-8a64cm',
-    data() {
-      return {
-        embed
-      }
-    },
     methods: {
       hello() {
         alert('hello')
@@ -25,15 +18,19 @@ function mountUtility(embed) {
   })
 }
 
-// Add Vue
-const vueScript = document.createElement('script')
-vueScript.src = 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js'
-
-// Get utility HTML and mount the Vue instance
+// Get utility markup and mount the Vue instance to it
 vueScript.onload = function () {
   getHtml()
   .then(function (html) {
-    mountUtility(html)
+
+    // Turn the markup into excecutable HTML
+    const parser = new DOMParser()
+    const utilityDocument = parser.parseFromString(html, 'text/html')
+    const utilityHtml = utilityDocument.body
+    document.getElementById('uw-8a64cm').prepend(utilityHtml)
+
+    // Mount the Vue instance
+    mountUtility()
   })
 }
 
