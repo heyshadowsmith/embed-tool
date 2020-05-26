@@ -8,7 +8,7 @@ utility.setAttributeNode(vhtml)
 embedHook.prepend(utility)
 
 async function getHtml() {
-  const response = await fetch('https://embed-tool-pbmvj2gh5.now.sh/remote.html')
+  const response = await fetch('https://embed-tool.now.sh/remote.html')
   return response.text()
 }
 
