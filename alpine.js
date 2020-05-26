@@ -24,8 +24,9 @@ alpineScript.onload = function () {
   alpineDependencyScript.text = `
     function test() {
       return {
+        name: '',
         hello() {
-          alert('hello')
+          alert(this.name)
         }
       }
     }`
