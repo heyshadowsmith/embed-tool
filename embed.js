@@ -1,11 +1,8 @@
 // Create utility
 const embedHook = document.getElementById('uw-8a64cm')
-const utility = document.createElement("div")
-utility.setAttribute("id", "utility")
 vhtml = document.createAttribute("v-html")
 vhtml.value = "embed"
-utility.setAttributeNode(vhtml)
-embedHook.prepend(utility)
+embedHook.setAttributeNode(vhtml)
 
 async function getHtml() {
   const response = await fetch('https://embed-tool.now.sh/remote.html')
@@ -14,10 +11,15 @@ async function getHtml() {
 
 function mountUtility(embed) {
   new Vue({
-    el: '#utility',
+    el: '#uw-8a64cm',
     data() {
       return {
         embed
+      }
+    },
+    methods: {
+      hello() {
+        alert('hello')
       }
     }
   })
