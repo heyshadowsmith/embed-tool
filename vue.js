@@ -3,7 +3,7 @@ const vueScript = document.createElement('script')
 vueScript.src = 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js'
 
 async function getHtml() {
-  const response = await fetch('https://embed-tool.now.sh/vue.html')
+  const response = await fetch('https://embed-tool.now.sh/vue-markup')
   return response.text()
 }
 
