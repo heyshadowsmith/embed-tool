@@ -1,3 +1,4 @@
+// Get utility markup
 async function getHtml() {
   const response = await fetch('https://embed-tool.now.sh/alpine.html')
   return response.text()
@@ -19,13 +20,17 @@ alpineScript.src = 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpi
 
 // When Alpine finishes loading add dependency function
 alpineScript.onload = function () {
-  function test() {
-    return {
-      hello() {
-        alert('hello')
+  alpineDependencyScript = document.createElement('script')
+  alpineDependencyScript.text = `
+    function test() {
+      return {
+        hello() {
+          alert('hello')
+        }
       }
-    }
-  }
+    }`
+
+  document.body.appendChild(alpineDependencyScript)
 }
 
-document.head.prependChild(alpineScript)
+document.head.appendChild(alpineScript)
