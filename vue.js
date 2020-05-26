@@ -3,13 +3,13 @@ const vueScript = document.createElement('script')
 vueScript.src = 'https://cdn.jsdelivr.net/npm/vue/dist/vue.js'
 
 async function getHtml() {
-  const response = await fetch('https://embed-tool.now.sh/remote.html')
+  const response = await fetch('https://embed-tool.now.sh/vue.html')
   return response.text()
 }
 
 function mountUtility() {
   new Vue({
-    el: '#uw-8a64cm',
+    el: '#uw-test-widget',
     methods: {
       hello() {
         alert('hello')
@@ -27,7 +27,7 @@ vueScript.onload = function () {
     const parser = new DOMParser()
     const utilityDocument = parser.parseFromString(html, 'text/html')
     const utilityHtml = utilityDocument.body
-    document.getElementById('uw-8a64cm').prepend(utilityHtml)
+    document.getElementById('uw-test-widget').prepend(utilityHtml)
 
     // Mount the Vue instance
     mountUtility()
