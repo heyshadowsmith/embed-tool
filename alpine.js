@@ -21,6 +21,7 @@ alpineScript.src = 'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpi
 // When Alpine finishes loading add dependency function
 alpineScript.onload = function () {
   alpineDependencyScript = document.createElement('script')
+  
   alpineDependencyScript.text = `
     function test() {
       return {
